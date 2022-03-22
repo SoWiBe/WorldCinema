@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">BatumiCinema</string>
+    <string name="title">WorldCinema</string>
+    <string name="enail">E-mail</string>
+    <string name="password">Пароль</string>
+    <string name="login">Войти</string>
+    <string name="registration">Регистрация</string>
+    <string name="name">Имя</string>
+    <string name="second_name">Фамилия</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="singUp">Зарегистрироваться</string>
+    <string name="have_account">У меня уже есть аккаунт</string>
+    <string name="main">Главное</string>
+    <string name="compilation">Побдорка</string>
+    <string name="profile">Профиль</string>
+    <string name="collections">Коллекции</string>
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
