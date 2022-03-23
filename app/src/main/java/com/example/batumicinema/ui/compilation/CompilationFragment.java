@@ -1,4 +1,4 @@
-package com.example.batumicinema.ui.home;
+package com.example.batumicinema.ui.compilation;
 
 import android.os.Bundle;
 
@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 
 import com.example.batumicinema.R;
 
-public class HomeFragment extends Fragment {
+public class CompilationFragment extends Fragment {
 
-    public HomeFragment() {
+    public CompilationFragment() {
+        // Required empty public constructor
     }
-
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
+    public static CompilationFragment newInstance(String param1, String param2) {
+        CompilationFragment fragment = new CompilationFragment();
         return fragment;
     }
 
@@ -28,6 +28,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_compilation, container, false);
     }
 }
