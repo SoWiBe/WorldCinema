@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.method.MovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +16,14 @@ import android.widget.Toast;
 import com.example.batumicinema.Authorization.AuthorizationActivity;
 import com.example.batumicinema.R;
 import com.example.batumicinema.adapters.CoversAdapter;
+import com.example.batumicinema.adapters.MovieAdapter;
 import com.example.batumicinema.network.ApiHandler;
 import com.example.batumicinema.network.ErrorUtils;
 import com.example.batumicinema.network.MovieCoverHandler;
+import com.example.batumicinema.network.MovieHandler;
 import com.example.batumicinema.network.models.LoginResponse;
 import com.example.batumicinema.network.models.MovieCoverResponse;
+import com.example.batumicinema.network.models.MovieResponse;
 import com.example.batumicinema.network.service.IApiService;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -34,11 +38,14 @@ public class HomeFragment extends Fragment {
     private static final String TAG = "HomeFragment";
     private TextInputEditText editEmail, editPassword;
     private ArrayList<MovieCoverResponse> movieCoverResponses;
+    private ArrayList<MovieResponse> movieResponses;
     private RecyclerView recyclerView;
     private CoversAdapter coversAdapter;
+    private MovieAdapter movieAdapter;
 
     private boolean isSignIn = false;
     IApiService service = MovieCoverHandler.getInstance().getService();
+    IApiService serviceMovie = MovieHandler.getInstance().getService();
     public HomeFragment() {
 
     }
@@ -58,10 +65,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_home, container, false);
         movieCoverResponses = new ArrayList<>();
+        movieResponses = new ArrayList<>();
         recyclerView = view.findViewById(R.id.recyclerView);
-        coversAdapter = new CoversAdapter(movieCoverResponses, getContext());
-        recyclerView.setAdapter(coversAdapter);
-        getCovers();
+        movieAdapter = new MovieAdapter(movieResponses, getContext());
+        recyclerView.setAdapter(movieAdapter);
+        getMovies();
         return view;
     }
 
@@ -73,7 +81,7 @@ public class HomeFragment extends Fragment {
                     if(response.isSuccessful()){
                         Toast.makeText(getContext(), "EHFF!"+response.body().getBackgroundImage(), Toast.LENGTH_SHORT).show();
                         movieCoverResponses.add(response.body());
-                        coversAdapter.notifyDataSetChanged();
+                        movieAdapter.notifyDataSetChanged();
                     } else if (response.code() == 400) {
                         String serverErrorMessage = ErrorUtils.parseError(response).message();
                         Log.d(TAG, serverErrorMessage.toString() + " || " + response.code());
@@ -85,6 +93,32 @@ public class HomeFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<MovieCoverResponse> call, Throwable t) {
+                    Toast.makeText(getContext(),t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+    }
+
+    private void getMovies() {
+        AsyncTask.execute(() -> {
+            serviceMovie.getMovies().enqueue(new Callback<MovieResponse>() {
+                @Override
+                public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                    if(response.isSuccessful()){
+                        Toast.makeText(getContext(), "Response!"+response.body().getPoster(), Toast.LENGTH_SHORT).show();
+                        movieResponses.add(response.body());
+                        movieAdapter.notifyDataSetChanged();
+                    } else if (response.code() == 400) {
+                        String serverErrorMessage = ErrorUtils.parseError(response).message();
+                        Log.d(TAG, serverErrorMessage.toString() + " || " + response.code());
+                        Toast.makeText(getContext(), serverErrorMessage.toString(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Произошла неизвестная ошибка", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<MovieResponse> call, Throwable t) {
                     Toast.makeText(getContext(),t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

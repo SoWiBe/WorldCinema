@@ -3,6 +3,7 @@ package com.example.batumicinema.network.service;
 import com.example.batumicinema.network.models.LoginBody;
 import com.example.batumicinema.network.models.LoginResponse;
 import com.example.batumicinema.network.models.MovieCoverResponse;
+import com.example.batumicinema.network.models.MovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -14,4 +15,6 @@ public interface IApiService {
     Call<LoginResponse> doLogin(@Body LoginBody registerBody);
     @GET("cover")
     Call<MovieCoverResponse> getCovers();
+    @GET("movies")
+    Call<MovieResponse> getMovies();
 }
