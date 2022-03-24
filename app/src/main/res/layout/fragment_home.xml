@@ -8,20 +8,9 @@
     android:background="@color/black_new"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/textHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:layout_margin="15dp"
-        android:text="Altered Carbon"
-        android:textStyle="bold"
-        android:textSize="22dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:src="@drawable/carbon_14"/>
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+       android:id="@+id/recyclerView"/>
 </LinearLayout>

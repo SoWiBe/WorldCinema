@@ -28,6 +28,7 @@ public class AuthorizationActivity extends AppCompatActivity {
     private static final String TAG = "AuthorizationActivity";
     private TextInputEditText editEmail, editPassword;
 
+    private boolean isSignIn = false;
     IApiService service = ApiHandler.getInstance().getService();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +51,7 @@ public class AuthorizationActivity extends AppCompatActivity {
     }
 
     public void goToMenu(View view) {
-//        startActivity(new Intent(AuthorizationActivity.this, MainActivity.class));
-//        finish();
         doLogin();
-
     }
     private void doLogin(){
         AsyncTask.execute(() -> {
@@ -62,6 +60,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(AuthorizationActivity.this, "Авторизация прошла успешно!"+response.body().getToken(), Toast.LENGTH_SHORT).show();
+                        startMenu();
                     } else if (response.code() == 400) {
                         String serverErrorMessage = ErrorUtils.parseError(response).message();
                         Toast.makeText(AuthorizationActivity.this, serverErrorMessage.toString(), Toast.LENGTH_SHORT).show();
@@ -78,6 +77,10 @@ public class AuthorizationActivity extends AppCompatActivity {
         });
     }
 
+    public void startMenu() {
+        startActivity(new Intent(AuthorizationActivity.this, MainActivity.class));
+        finish();
+    }
     public LoginBody getLoginData() {
         return new LoginBody(editEmail.getText().toString(), editPassword.getText().toString());
     }
