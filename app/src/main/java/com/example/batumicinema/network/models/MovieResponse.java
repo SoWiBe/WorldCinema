@@ -1,20 +1,29 @@
 package com.example.batumicinema.network.models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class MovieResponse {
     @SerializedName("movies")
+    @Expose
     private String movieId;
     @SerializedName("name")
+    @Expose
     private String name;
     @SerializedName("description")
+    @Expose
     private String age;
     @SerializedName("images")
-    private String[] images;
+    @Expose
+    private List<String> images;
     @SerializedName("poster")
+    @Expose
     private String poster;
     @SerializedName("tags")
-    private Tag[] tags;
+    @Expose
+    private List<Tag> tags;
 
     public String getMovieId() {
         return movieId;
@@ -40,14 +49,6 @@ public class MovieResponse {
         this.age = age;
     }
 
-    public String[] getImages() {
-        return images;
-    }
-
-    public void setImages(String[] images) {
-        this.images = images;
-    }
-
     public String getPoster() {
         return poster;
     }
@@ -56,11 +57,19 @@ public class MovieResponse {
         this.poster = poster;
     }
 
-    public Tag[] getTags() {
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(Tag[] tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 }

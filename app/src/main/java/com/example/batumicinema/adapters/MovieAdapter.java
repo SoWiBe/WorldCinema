@@ -42,7 +42,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MovieResponse movieResponse = movieResponses.get(position);
-        holder.setTextCinema(movieResponse.getMovieId());
+        holder.setTextCinema(movieResponse.getName());
         Picasso.with(context).load("http://cinema.areas.su/up/images/" + movieResponse.getPoster()).into(holder.coverCinema);
     }
 

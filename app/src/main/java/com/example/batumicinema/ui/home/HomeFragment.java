@@ -28,6 +28,7 @@ import com.example.batumicinema.network.service.IApiService;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -65,10 +66,9 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_home, container, false);
         movieCoverResponses = new ArrayList<>();
-        movieResponses = new ArrayList<>();
+
         recyclerView = view.findViewById(R.id.recyclerView);
-        movieAdapter = new MovieAdapter(movieResponses, getContext());
-        recyclerView.setAdapter(movieAdapter);
+
         getMovies();
         return view;
     }
@@ -101,12 +101,14 @@ public class HomeFragment extends Fragment {
 
     private void getMovies() {
         AsyncTask.execute(() -> {
-            serviceMovie.getMovies().enqueue(new Callback<MovieResponse>() {
+            serviceMovie.getMovies().enqueue(new Callback<List<MovieResponse>>() {
                 @Override
-                public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                public void onResponse(Call<List<MovieResponse>> call, Response<List<MovieResponse>> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(getContext(), "Response!"+response.body().getPoster(), Toast.LENGTH_SHORT).show();
-                        movieResponses.add(response.body());
+                        Toast.makeText(getContext(), "Response!"+response.body(), Toast.LENGTH_SHORT).show();
+                        movieResponses = new ArrayList<>(response.body());
+                        movieAdapter = new MovieAdapter(movieResponses, getContext());
+                        recyclerView.setAdapter(movieAdapter);
                         movieAdapter.notifyDataSetChanged();
                     } else if (response.code() == 400) {
                         String serverErrorMessage = ErrorUtils.parseError(response).message();
@@ -118,8 +120,9 @@ public class HomeFragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(Call<MovieResponse> call, Throwable t) {
+                public void onFailure(Call<List<MovieResponse>> call, Throwable t) {
                     Toast.makeText(getContext(),t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onFailure: " + t.getLocalizedMessage());
                 }
             });
         });
