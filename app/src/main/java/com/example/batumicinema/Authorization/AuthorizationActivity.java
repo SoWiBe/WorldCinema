@@ -3,6 +3,7 @@ package com.example.batumicinema.Authorization;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -28,21 +29,28 @@ public class AuthorizationActivity extends AppCompatActivity {
     private static final String TAG = "AuthorizationActivity";
     private TextInputEditText editEmail, editPassword;
 
+    private SharedPreferences.Editor editor;
+    private SharedPreferences preferences;
+    private String token;
     private boolean isSignIn = false;
     IApiService service = ApiHandler.getInstance().getService();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authorization);
-
+        editor = getSharedPreferences("token", MODE_PRIVATE).edit();
+        preferences = getSharedPreferences("token", MODE_PRIVATE);
         initializeViews();
+        token = preferences.getString("token", "");
+        if(token != ""){
+            startMenu();
+        }
     }
 
 
     private void initializeViews() {
         editEmail = findViewById(R.id.text_text_email);
         editPassword = findViewById(R.id.text_text_password);
-
     }
 
     public void goToSignUp(View view) {
@@ -60,6 +68,7 @@ public class AuthorizationActivity extends AppCompatActivity {
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     if(response.isSuccessful()){
                         Toast.makeText(AuthorizationActivity.this, "Авторизация прошла успешно!"+response.body().getToken(), Toast.LENGTH_SHORT).show();
+                        editor.putString("token", response.body().getToken()).apply();
                         startMenu();
                     } else if (response.code() == 400) {
                         String serverErrorMessage = ErrorUtils.parseError(response).message();

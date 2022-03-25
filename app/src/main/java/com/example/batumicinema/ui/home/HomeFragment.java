@@ -4,7 +4,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import android.text.method.MovementMethod;
 import android.util.Log;
@@ -41,6 +44,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<MovieCoverResponse> movieCoverResponses;
     private ArrayList<MovieResponse> movieResponses;
     private RecyclerView recyclerView;
+    private LinearLayoutManager linearLayoutManager;
     private CoversAdapter coversAdapter;
     private MovieAdapter movieAdapter;
 
@@ -65,10 +69,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_home, container, false);
-        movieCoverResponses = new ArrayList<>();
-
+        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView = view.findViewById(R.id.recyclerView);
-
+        SnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
         getMovies();
         return view;
     }
@@ -109,6 +113,7 @@ public class HomeFragment extends Fragment {
                         movieResponses = new ArrayList<>(response.body());
                         movieAdapter = new MovieAdapter(movieResponses, getContext());
                         recyclerView.setAdapter(movieAdapter);
+                        recyclerView.setLayoutManager(linearLayoutManager);
                         movieAdapter.notifyDataSetChanged();
                     } else if (response.code() == 400) {
                         String serverErrorMessage = ErrorUtils.parseError(response).message();

@@ -22,13 +22,22 @@
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
-        <ImageView
-            android:id="@+id/image_cover_cinema"
-            android:layout_marginTop="50dp"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-        </ImageView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="50dp"
+            app:cardCornerRadius="30dp"
+            app:cardBackgroundColor="#00FFFFFF">
+            <ImageView
+                android:id="@+id/image_cover_cinema"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"></ImageView>
+        </androidx.cardview.widget.CardView>
     </androidx.cardview.widget.CardView>
 </LinearLayout>
