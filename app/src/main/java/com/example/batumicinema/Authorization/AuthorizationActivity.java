@@ -67,7 +67,6 @@ public class AuthorizationActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(AuthorizationActivity.this, "Авторизация прошла успешно!"+response.body().getToken(), Toast.LENGTH_SHORT).show();
                         editor.putString("token", response.body().getToken()).apply();
                         startMenu();
                     } else if (response.code() == 400) {

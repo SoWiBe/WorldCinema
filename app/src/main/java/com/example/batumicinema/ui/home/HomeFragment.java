@@ -109,7 +109,6 @@ public class HomeFragment extends Fragment {
                 @Override
                 public void onResponse(Call<List<MovieResponse>> call, Response<List<MovieResponse>> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(getContext(), "Response!"+response.body(), Toast.LENGTH_SHORT).show();
                         movieResponses = new ArrayList<>(response.body());
                         movieAdapter = new MovieAdapter(movieResponses, getContext());
                         recyclerView.setAdapter(movieAdapter);

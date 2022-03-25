@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/img_user_photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/profile_photo"/>
@@ -40,16 +41,16 @@
                 android:layout_marginLeft="15dp"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:id="@+id/txt_user_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Воланд Иванов"
                     android:textStyle="bold"
                     android:textSize="24sp"
                     android:textColor="#fff"/>
                 <TextView
+                    android:id="@+id/txt_user_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="voland.ivanov@gmail.com"
                     android:textSize="14sp"
                     android:textColor="@color/gray"/>
             </LinearLayout>
@@ -130,7 +131,7 @@
             </LinearLayout>
         </LinearLayout>
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnSignOut"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="50dp"
