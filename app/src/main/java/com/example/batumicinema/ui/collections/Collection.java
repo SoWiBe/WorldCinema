@@ -2,7 +2,10 @@ package com.example.batumicinema.ui.collections;
 
 import android.widget.TextView;
 
-public class Collection {
+import java.io.Serializable;
+
+
+public class Collection implements Serializable {
     private int col_ItemId;
     private String col_Title;
 

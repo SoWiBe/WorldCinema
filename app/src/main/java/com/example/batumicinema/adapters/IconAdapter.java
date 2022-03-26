@@ -1,6 +1,7 @@
 package com.example.batumicinema.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.batumicinema.R;
+import com.example.batumicinema.ui.collections.CreateCollection;
 import com.example.batumicinema.ui.collections.IconItem;
 
 import java.util.ArrayList;
@@ -20,9 +22,11 @@ public class IconAdapter extends ArrayAdapter<IconItem> {
 
     private List<IconItem> iconsList = new ArrayList<>();
     private int customLayoutId;
+    private Context context;
 
     public IconAdapter(@NonNull Context context, int resource, @NonNull List<IconItem> _iconsList){
         super(context, resource, _iconsList);
+        this.context = context;
         iconsList = _iconsList;
         customLayoutId = resource;
     }
@@ -43,6 +47,14 @@ public class IconAdapter extends ArrayAdapter<IconItem> {
 
         ImageView imageView = v.findViewById(R.id.img_icon);
         IconItem iconItem  =  iconsList.get(position);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, CreateCollection.class);
+                intent.putExtra("icon", iconItem.getIcon_id());
+                context.startActivity(intent);
+            }
+        });
         imageView.setImageResource(iconItem.getIcon_id());
 
         return v;

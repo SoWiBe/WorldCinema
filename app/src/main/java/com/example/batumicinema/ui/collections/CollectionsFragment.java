@@ -36,6 +36,10 @@ public class CollectionsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle arguments = getArguments();
+        if (arguments != null){
+
+        }
     }
 
     @Override

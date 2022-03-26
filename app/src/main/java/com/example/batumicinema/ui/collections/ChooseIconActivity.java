@@ -39,7 +39,7 @@ public class ChooseIconActivity extends AppCompatActivity {
     
     private void setIconList() {
         for (int i = 0; i < 36; i++) {
-            iconList.add(new IconItem(R.drawable.heart));
+            iconList.add(new IconItem(R.drawable.plane));
         }
         iconAdapter.notifyDataSetChanged();
     }

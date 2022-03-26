@@ -68,6 +68,7 @@
                     android:src="@drawable/ellipse_6">
                 </ImageView>
                 <ImageView
+                    android:id="@+id/iconChoose"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -101,7 +102,7 @@
             android:gravity="center"
             android:orientation="vertical">
             <Button
-                android:id="@+id/btnLogIn"
+                android:id="@+id/btnSaveCollection"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
