@@ -79,7 +79,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSignIn"
+                    android:id="@+id/btnChooseIcon"
                     android:layout_width="match_parent"
                     android:textColor="@color/orange"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"

@@ -3,6 +3,7 @@ package com.example.batumicinema.Authorization;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.batumicinema.MainActivity;
 import com.example.batumicinema.R;
+import com.example.batumicinema.network.ErrorUtils;
 import com.example.batumicinema.network.RegistrationHandler;
 import com.example.batumicinema.network.models.LoginBody;
 import com.example.batumicinema.network.models.RegistrationBody;
@@ -26,8 +28,10 @@ import retrofit2.Response;
 public class SignInActivity extends AppCompatActivity {
 
     private IApiService service = RegistrationHandler.getInstance().getService();
-    private Button button;
+    private Button btnRegister;
+    private MaterialButton btnHaveAccount;
     private TextInputEditText  editTextEmail, editTextFirstName, editTextLastName, editTextPassword, editTextRepeatPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,13 +41,21 @@ public class SignInActivity extends AppCompatActivity {
         editTextLastName = findViewById(R.id.text_text_second_name);
         editTextPassword = findViewById(R.id.text_text_password);
         editTextRepeatPassword = findViewById(R.id.text_text_repeat_password);
-        button = findViewById(R.id.btnLogIn);
-        button.setOnClickListener(new View.OnClickListener() {
+        btnRegister = findViewById(R.id.btnRegister);
+        btnHaveAccount = findViewById(R.id.btnLogIn);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 doRegister();
             }
         });
+        btnHaveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startAuthorization();
+            }
+        });
+
     }
 
     private void doRegister(){
@@ -52,14 +64,18 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(SignInActivity.this, "succesful", Toast.LENGTH_SHORT).show();
-                        startMainMenu();
+                        Toast.makeText(SignInActivity.this, "Успешная регистрация!", Toast.LENGTH_SHORT).show();
+                    } else if (response.code() == 400) {
+                        String serverErrorMessage = ErrorUtils.parseError(response).message();
+                        Toast.makeText(SignInActivity.this, serverErrorMessage.toString(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(SignInActivity.this, "Произошла неизвестная ошибка!", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<RegistrationResponse> call, Throwable t) {
-
+                    startAuthorization();
                 }
             });
         });
@@ -70,8 +86,8 @@ public class SignInActivity extends AppCompatActivity {
                 editTextFirstName.getText().toString(), editTextLastName.getText().toString());
     }
 
-    private void startMainMenu(){
-        startActivity(new Intent(SignInActivity.this, MainActivity.class));
+    private void startAuthorization(){
+        startActivity(new Intent(SignInActivity.this, AuthorizationActivity.class));
         finish();
     }
 }
