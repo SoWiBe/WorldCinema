@@ -22,14 +22,17 @@
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/shape_incoming_image_menu_main.xml" value="0.214" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/vector.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_authorization.xml" value="0.2554347826086957" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_chat.xml" value="0.2296195652173913" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_choose_icon.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_create_collection.xml" value="0.28125" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_discussions.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_main_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/collection_item.xml" value="0.33" />
-        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/cover_item.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/cover_item.xml" value="0.25" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/discussions_item.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/fragment_collections.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/fragment_compilation.xml" value="0.18333333333333332" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />

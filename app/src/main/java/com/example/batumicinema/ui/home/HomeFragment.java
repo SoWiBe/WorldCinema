@@ -103,6 +103,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
+
+
     private void getMovies() {
         AsyncTask.execute(() -> {
             serviceMovie.getMovies().enqueue(new Callback<List<MovieResponse>>() {

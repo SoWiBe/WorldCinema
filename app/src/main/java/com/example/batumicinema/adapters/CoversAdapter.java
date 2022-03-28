@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.batumicinema.R;
@@ -27,6 +28,7 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
     private LayoutInflater inflater;
     private Context context;
     private Callback callback;
+    private CardView cardView;
 
     public CoversAdapter(ArrayList<MovieCoverResponse> movieCoverResponses, Context context) {
         this.movieCoverResponses = movieCoverResponses;
@@ -39,6 +41,7 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
     public CoversAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = inflater.inflate(R.layout.cover_item, parent, false);
+
         return new ViewHolder(view);
     }
 

@@ -12,10 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.batumicinema.Authorization.AuthorizationActivity;
+import com.example.batumicinema.Discussions.DiscussionsActivity;
 import com.example.batumicinema.R;
 import com.example.batumicinema.network.ProfileHandler;
 import com.example.batumicinema.network.models.ProfileResponse;
@@ -38,6 +40,7 @@ public class ProfileFragment extends Fragment {
     private TextView txtName;
     private TextView txtEmail;
     private ImageView imgProfile;
+    private LinearLayout linearDiscussions;
     public ProfileFragment() {
 
     }
@@ -62,6 +65,14 @@ public class ProfileFragment extends Fragment {
         txtName = v.findViewById(R.id.txt_user_name);
         txtEmail = v.findViewById(R.id.txt_user_email);
         imgProfile = v.findViewById(R.id.img_user_photo);
+
+        linearDiscussions = v.findViewById(R.id.linear_discussions);
+        linearDiscussions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), DiscussionsActivity.class));
+            }
+        });
 
         MaterialButton materialButton = v.findViewById(R.id.btnSignOut);
         materialButton.setOnClickListener(new View.OnClickListener() {

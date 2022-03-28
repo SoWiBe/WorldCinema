@@ -1,5 +1,6 @@
 package com.example.batumicinema.network.service;
 
+import com.example.batumicinema.network.models.ChatResponse;
 import com.example.batumicinema.network.models.LoginBody;
 import com.example.batumicinema.network.models.LoginResponse;
 import com.example.batumicinema.network.models.MovieCoverResponse;
@@ -15,6 +16,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface IApiService {
     @POST("login")
@@ -27,4 +29,6 @@ public interface IApiService {
     Call<List<MovieResponse>> getMovies();
     @GET("user")
     Call<List<ProfileResponse>> getData(@Header("Authorization") String token);
+    @GET("chats/{movieId}")
+    Call<List<ChatResponse>> getChats(@Path("movieId") String movieId);
 }
