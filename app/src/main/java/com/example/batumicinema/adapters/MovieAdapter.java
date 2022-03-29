@@ -42,13 +42,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         context = parent.getContext();
         View view = inflater.inflate(R.layout.cover_item, parent, false);
         linearLayout = view.findViewById(R.id.linearDiscussions);
-        linearLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                context.startActivity(new Intent(context, ChatActivity.class));
-                Toast.makeText(context, "sdf", Toast.LENGTH_SHORT).show();
-            }
-        });
         return new ViewHolder(view);
     }
 
@@ -56,6 +49,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MovieResponse movieResponse = movieResponses.get(position);
         holder.setTextCinema(movieResponse.getName());
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, ChatActivity.class));
+            }
+        });
         Picasso.with(context).load("http://cinema.areas.su/up/images/" + movieResponse.getPoster()).into(holder.coverCinema);
     }
 

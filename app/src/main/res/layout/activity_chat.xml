@@ -43,7 +43,7 @@
         android:orientation="horizontal"
         android:layout_marginBottom="15dp">
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/text_input_password"
+            android:id="@+id/textMessage"
             style="@style/TextInputLayoutStyle"
             android:textColorHint="#AFAFAF"
             android:hint="Напишите сообщение"
@@ -55,7 +55,7 @@
             android:layout_height="50dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/text_text_password"
+                android:id="@+id/textEditMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Напишите сообщение"
@@ -68,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
             android:layout_weight="3"
+            android:id="@+id/frameSendImage"
             >
             <ImageView
                 android:layout_width="40dp"

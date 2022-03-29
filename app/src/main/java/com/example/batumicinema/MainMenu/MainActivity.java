@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity{
 
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.main_container, homeFragment, "home").commit();
-        fragmentManager.beginTransaction().add(R.id.main_container, compilFragment, "home").hide(compilFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.main_container, collectionsFragment, "home").hide(collectionsFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.main_container, profileFragment, "home").hide(profileFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.main_container, compilFragment, "compilation").hide(compilFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.main_container, collectionsFragment, "collections").hide(collectionsFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.main_container, profileFragment, "profile").hide(profileFragment).commit();
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(onNavigationItemSelectedListener);

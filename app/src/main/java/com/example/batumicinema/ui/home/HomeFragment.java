@@ -9,22 +9,17 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.text.method.MovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.batumicinema.Authorization.AuthorizationActivity;
 import com.example.batumicinema.R;
-import com.example.batumicinema.adapters.CoversAdapter;
 import com.example.batumicinema.adapters.MovieAdapter;
-import com.example.batumicinema.network.ApiHandler;
 import com.example.batumicinema.network.ErrorUtils;
 import com.example.batumicinema.network.MovieCoverHandler;
 import com.example.batumicinema.network.MovieHandler;
-import com.example.batumicinema.network.models.LoginResponse;
 import com.example.batumicinema.network.models.MovieCoverResponse;
 import com.example.batumicinema.network.models.MovieResponse;
 import com.example.batumicinema.network.service.IApiService;
@@ -45,7 +40,6 @@ public class HomeFragment extends Fragment {
     private ArrayList<MovieResponse> movieResponses;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private CoversAdapter coversAdapter;
     private MovieAdapter movieAdapter;
 
     private boolean isSignIn = false;

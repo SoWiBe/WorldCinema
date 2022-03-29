@@ -14,6 +14,9 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/BatumiCinema/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/BatumiCinema/app/src/main/res/menu/bottom_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/chat.xml" value="0.1" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/chat_corner.xml" value="0.3675" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/chat_corner2.xml" value="0.3675" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/coll.xml" value="0.3675" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/collections.xml" value="0.1" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/corner_linear.xml" value="0.334" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/drawable/history.xml" value="0.1" />
@@ -30,6 +33,8 @@
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_main_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/chat_item_my.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/chat_item_opponent.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/collection_item.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/cover_item.xml" value="0.25" />
         <entry key="..\:/Users/Administrator/Desktop/BatumiCinema/app/src/main/res/layout/discussions_item.xml" value="0.33" />
