@@ -7,11 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.batumicinema.R;
+import com.example.batumicinema.chat.ChatActivity;
 import com.example.batumicinema.ui.collections.CreateCollection;
 import com.example.batumicinema.ui.collections.IconItem;
 
@@ -24,6 +27,7 @@ public class IconAdapter extends ArrayAdapter<IconItem> {
     private int customLayoutId;
     private Context context;
 
+    private LinearLayout linearLayout;
     public IconAdapter(@NonNull Context context, int resource, @NonNull List<IconItem> _iconsList){
         super(context, resource, _iconsList);
         this.context = context;

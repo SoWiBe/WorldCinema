@@ -1,19 +1,23 @@
 package com.example.batumicinema.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.telecom.Call;
 import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.batumicinema.R;
+import com.example.batumicinema.chat.ChatActivity;
 import com.example.batumicinema.network.models.MovieCoverResponse;
 import com.squareup.picasso.Picasso;
 
@@ -29,6 +33,8 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
     private Context context;
     private Callback callback;
     private CardView cardView;
+    private CardView cardDiscussion;
+    private LinearLayout linearLayout;
 
     public CoversAdapter(ArrayList<MovieCoverResponse> movieCoverResponses, Context context) {
         this.movieCoverResponses = movieCoverResponses;
@@ -41,6 +47,7 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
     public CoversAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = inflater.inflate(R.layout.cover_item, parent, false);
+        cardDiscussion = view.findViewById(R.id.card_cover);
 
         return new ViewHolder(view);
     }
@@ -49,6 +56,7 @@ public class CoversAdapter extends RecyclerView.Adapter<CoversAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MovieCoverResponse movieCoverResponse = movieCoverResponses.get(position);
         holder.setTextCinema(movieCoverResponse.getMovieId());
+
         Picasso.with(context).load("http://cinema.areas.su/up/images/" + movieCoverResponse.getBackgroundImage()).into(holder.coverCinema);
     }
 
