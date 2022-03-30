@@ -37,7 +37,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
                 return new LayoutOneViewHolder(viewOne);
             case LayoutTwo:
                 View viewTwo = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item_opponent, parent, false);
-                return new LayoutOneViewHolder(viewTwo);
+                return new LayoutTwoViewHolder(viewTwo);
             default:
                 return null;
         }
@@ -51,6 +51,12 @@ public class ChatAdapter extends RecyclerView.Adapter {
                 ((LayoutOneViewHolder)holder).setTxtMessage(text);
                 ((LayoutOneViewHolder)holder).setTxtNamePerson(text);
                 ((LayoutOneViewHolder)holder).imageView.setImageResource(R.drawable.disc_arraw);
+                break;
+            case LayoutTwo:
+                String text1 = chatItems.get(position).getText();
+                ((LayoutTwoViewHolder)holder).setTxtMessage(text1);
+                ((LayoutTwoViewHolder)holder).setTxtNamePerson(text1);
+                ((LayoutTwoViewHolder)holder).imageView.setImageResource(R.drawable.disc_arraw);
                 break;
         }
     }
@@ -83,6 +89,35 @@ public class ChatAdapter extends RecyclerView.Adapter {
             txtMessage = itemView.findViewById(R.id.txt_chat_my);
             txtNamePerson = itemView.findViewById(R.id.txt_chat_name_my);
             imageView = itemView.findViewById(R.id.image_my);
+        }
+
+        public TextView getTxtMessage() {
+            return txtMessage;
+        }
+
+        public void setTxtMessage(String txt) {
+            txtMessage.setText(txt);
+        }
+
+        public TextView getTxtNamePerson() {
+            return txtNamePerson;
+        }
+
+        public void setTxtNamePerson(String txtName) {
+            txtNamePerson.setText(txtName);
+        }
+    }
+    class LayoutTwoViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView txtMessage;
+        private TextView txtNamePerson;
+        public ImageView imageView;
+
+        public LayoutTwoViewHolder(@NonNull View itemView) {
+            super(itemView);
+            txtMessage = itemView.findViewById(R.id.txt_chat_opponent);
+            txtNamePerson = itemView.findViewById(R.id.txt_chat_name_opponent);
+            imageView = itemView.findViewById(R.id.image_opponent);
         }
 
         public TextView getTxtMessage() {

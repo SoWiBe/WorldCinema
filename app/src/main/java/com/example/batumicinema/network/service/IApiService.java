@@ -1,5 +1,6 @@
 package com.example.batumicinema.network.service;
 
+import com.example.batumicinema.network.models.ChatMessageResponse;
 import com.example.batumicinema.network.models.ChatResponse;
 import com.example.batumicinema.network.models.LoginBody;
 import com.example.batumicinema.network.models.LoginResponse;
@@ -31,4 +32,6 @@ public interface IApiService {
     Call<List<ProfileResponse>> getData(@Header("Authorization") String token);
     @GET("chats/{movieId}")
     Call<List<ChatResponse>> getChats(@Path("movieId") String movieId);
+    @GET("chats/{chatId}/messages")
+    Call<List<ChatMessageResponse>> getChatMessages(@Header("Authorization") String token, @Path("chatId") String chatId);
 }

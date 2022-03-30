@@ -34,6 +34,7 @@ import retrofit2.Response;
 public class ProfileFragment extends Fragment {
 
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private static final String TAG = "ProfileFragment";
     private IApiService service = ProfileHandler.getInstance().getService();
     private String token;
@@ -54,6 +55,7 @@ public class ProfileFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreferences = getContext().getSharedPreferences("token", Context.MODE_PRIVATE);
+        editor = getContext().getSharedPreferences("token", Context.MODE_PRIVATE).edit();
         token = sharedPreferences.getString("token", "");
     }
 
@@ -97,6 +99,8 @@ public class ProfileFragment extends Fragment {
                 public void onResponse(Call<List<ProfileResponse>> call, Response<List<ProfileResponse>> response) {
                     txtEmail.setText(response.body().get(0).getEmail());
                     txtName.setText(response.body().get(0).getFirstName() + " " + response.body().get(0).getLastName());
+                    editor.putString("firstName", response.body().get(0).getFirstName()).apply();
+                    editor.putString("lastName", response.body().get(0).getLastName()).apply();
                     Picasso.with(getContext()).load("http://cinema.areas.su/up/images/" + response.body().get(0).getAvatar()).into(imgProfile);
                 }
 

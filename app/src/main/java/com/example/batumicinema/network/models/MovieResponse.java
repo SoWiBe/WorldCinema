@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class MovieResponse {
-    @SerializedName("movies")
+    @SerializedName("movieId")
     @Expose
     private String movieId;
     @SerializedName("name")
