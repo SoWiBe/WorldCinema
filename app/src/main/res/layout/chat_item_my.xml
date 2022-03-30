@@ -21,7 +21,7 @@
                 android:src="@drawable/chat_corner2" />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
                 android:orientation="vertical"
                 android:layout_margin="15dp">
                 <TextView
@@ -31,13 +31,33 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:text="Завтра уже выйдет финальная серия!!!"/>
-                <TextView
-                    android:id="@+id/txt_chat_name_my"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="#FFBFAB"
-                    android:textStyle="normal"
-                    android:text="Иван Иванов • 18:30"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="right|bottom"
+                    android:gravity="bottom">
+                    <TextView
+                        android:id="@+id/txt_chat_name_my"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFBFAB"
+                        android:textStyle="normal"
+                        android:text="Иван Иванов"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFBFAB"
+                        android:textStyle="normal"
+                        android:text=" • "/>
+                    <TextView
+                        android:id="@+id/txt_chat_time_my"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFBFAB"
+                        android:textStyle="normal"
+                        android:text="18:30"/>
+                </LinearLayout>
             </LinearLayout>
         </FrameLayout>
         <ImageView

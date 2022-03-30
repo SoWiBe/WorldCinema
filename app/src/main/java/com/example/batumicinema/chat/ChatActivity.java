@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -23,12 +24,15 @@ import com.example.batumicinema.network.ChatHandler;
 import com.example.batumicinema.network.ErrorUtils;
 import com.example.batumicinema.network.models.ChatMessageResponse;
 import com.example.batumicinema.network.models.ChatResponse;
+import com.example.batumicinema.network.models.MessageBody;
 import com.example.batumicinema.network.models.MovieResponse;
 import com.example.batumicinema.network.service.IApiService;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,7 +42,6 @@ public class ChatActivity extends AppCompatActivity {
 
     private FrameLayout frameSendImage;
     private ChatAdapter chatAdapter;
-    private List<ChatItem> chatItems;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
     private TextInputEditText message;
@@ -56,12 +59,14 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        recyclerView = findViewById(R.id.recyclerChat);
         sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
         token = sharedPreferences.getString("token", "");
+        message = findViewById(R.id.textEditMessage);
 
         myFirstName = sharedPreferences.getString("firstName", "");
-        mySecondName
-        Toast.makeText(this, sharedPreferences.getString("firstName", ""), Toast.LENGTH_SHORT).show();
+        mySecondName = sharedPreferences.getString("lastName", "");
+        Toast.makeText(this, myFirstName + "||" + mySecondName, Toast.LENGTH_SHORT).show();
         txtNameMovie = findViewById(R.id.txtChatName);
         bundle = getIntent().getExtras();
         if(bundle!=null){
@@ -70,18 +75,19 @@ public class ChatActivity extends AppCompatActivity {
             Toast.makeText(this, "" + movieId, Toast.LENGTH_SHORT).show();
         }
 
-        recyclerView = findViewById(R.id.recyclerChat);
         linearLayoutManager = new LinearLayoutManager(this);
-        message = findViewById(R.id.textEditMessage);
         recyclerView.setLayoutManager(linearLayoutManager);
-        chatItems = new ArrayList<>();
-        chatItems.add(new ChatItem(ChatItem.LayoutTwo, "Завтра уже выйдет финальная серия!!!"));
-        chatAdapter = new ChatAdapter(chatItems);
-        recyclerView.setAdapter(chatAdapter);
 
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                getChatMessages(token, chatId);
+            }
+        }, 0,3000);
         frameSendImage = findViewById(R.id.frameSendImage);
         frameSendImage.setOnClickListener(view -> {
-            chatItems.add(new ChatItem(ChatItem.LayoutTwo, message.getText().toString()));
+            sendMessage(token, chatId, new MessageBody(message.getText().toString()));
+            getChatMessages(token, chatId);
             chatAdapter.notifyDataSetChanged();
         });
     }
@@ -113,7 +119,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<ChatResponse>> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), "Произ22ошла неизвестная ошибка2222", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(), "Произ22ошла неизвестная ошибка2222", Toast.LENGTH_SHORT).show();
                 }
             });
         });
@@ -126,16 +132,47 @@ public class ChatActivity extends AppCompatActivity {
                 public void onResponse(Call<List<ChatMessageResponse>> call, Response<List<ChatMessageResponse>> response) {
                     if(response.isSuccessful()){
                         chatMessageResponses = new ArrayList<>(response.body());
+                        for (int i = 0; i < response.body().size(); i++) {
+                            chatMessageResponses.get(i).setViewType(1);
+                             if(chatMessageResponses.get(i).getFirstName().equals(myFirstName) &&
+                                     chatMessageResponses.get(i).getLastName().equals(mySecondName) ) {
+                                 chatMessageResponses.get(i).setViewType(0);
+                             }
+                        }
+                        chatAdapter = new ChatAdapter(chatMessageResponses);
+                        recyclerView.setAdapter(chatAdapter);
+                        recyclerView.scrollToPosition(chatMessageResponses.size() - 1);
                     } else if (response.code() == 400) {
                         Toast.makeText(getApplicationContext(), "AAAA", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), "22 неизвестная ошибка", Toast.LENGTH_SHORT).show();
                     }
                 }
+                @Override
+                public void onFailure(Call<List<ChatMessageResponse>> call, Throwable t) {
+//                    Toast.makeText(getApplicationContext(), "Произо222шла неизвестная ошибка", Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+    }
+
+    private void sendMessage(String token, String chatId, MessageBody text) {
+        AsyncTask.execute(() -> {
+            service.doMessage(token, chatId, text).enqueue(new Callback<List<ChatMessageResponse>>() {
+                @Override
+                public void onResponse(Call<List<ChatMessageResponse>> call, Response<List<ChatMessageResponse>> response) {
+                    if(response.isSuccessful()){
+                        Toast.makeText(getApplicationContext(), "sdfdsfsd", Toast.LENGTH_SHORT).show();
+                    } else if (response.code() == 400) {
+                        Toast.makeText(getApplicationContext(), "AAAA", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Произошла неизвестная ошибка", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
                 @Override
                 public void onFailure(Call<List<ChatMessageResponse>> call, Throwable t) {
-                    Toast.makeText(getApplicationContext(), "Произо222шла неизвестная ошибка", Toast.LENGTH_SHORT).show();
+
                 }
             });
         });

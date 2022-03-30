@@ -4,6 +4,7 @@ import com.example.batumicinema.network.models.ChatMessageResponse;
 import com.example.batumicinema.network.models.ChatResponse;
 import com.example.batumicinema.network.models.LoginBody;
 import com.example.batumicinema.network.models.LoginResponse;
+import com.example.batumicinema.network.models.MessageBody;
 import com.example.batumicinema.network.models.MovieCoverResponse;
 import com.example.batumicinema.network.models.MovieResponse;
 import com.example.batumicinema.network.models.ProfileResponse;
@@ -26,7 +27,7 @@ public interface IApiService {
     Call<RegistrationResponse> doRegistration(@Body RegistrationBody registerBody);
     @GET("cover")
     Call<MovieCoverResponse> getCovers();
-    @GET("movies?filter=inTrend")
+    @GET("movies?filter=new")
     Call<List<MovieResponse>> getMovies();
     @GET("user")
     Call<List<ProfileResponse>> getData(@Header("Authorization") String token);
@@ -34,4 +35,6 @@ public interface IApiService {
     Call<List<ChatResponse>> getChats(@Path("movieId") String movieId);
     @GET("chats/{chatId}/messages")
     Call<List<ChatMessageResponse>> getChatMessages(@Header("Authorization") String token, @Path("chatId") String chatId);
+    @POST("chats/{chatId}/messages")
+    Call<List<ChatMessageResponse>> doMessage(@Header("Authorization") String token, @Path("chatId") String chatId, @Body MessageBody message);
 }

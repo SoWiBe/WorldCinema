@@ -36,13 +36,33 @@
                     android:textColor="@color/white"
                     android:textStyle="bold"
                     android:text="Завтра уже выйдет финальная серия!!!"/>
-                <TextView
-                    android:id="@+id/txt_chat_name_opponent"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/gray"
-                    android:textStyle="normal"
-                    android:text="Агата Петрова • 18:21"/>
+                    android:orientation="horizontal"
+                    android:layout_gravity="left">
+                    <TextView
+                        android:id="@+id/txt_chat_name_opponent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textStyle="normal"
+                        android:text="Агата Петрова"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textStyle="normal"
+                        android:text=" • "/>
+                    <TextView
+                        android:id="@+id/txt_chat_time_opponent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/gray"
+                        android:textStyle="normal"
+                        android:text="18:30"/>
+                </LinearLayout>
+
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
