@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_new"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    tools:context=".Screens.SignInActivity">
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="50dp"
+        android:layout_gravity="center|top"
+        android:layout_height="50dp"
+        android:src="@drawable/logo">
+    </ImageView>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_email"
+        android:textColorHint="#AFAFAF"
+        app:counterTextColor="@color/orange"
+        app:boxBackgroundColor="@color/orange"
+        app:boxStrokeColor="@color/orange"
+        android:outlineAmbientShadowColor="@color/orange"
+        android:outlineSpotShadowColor="@color/orange"
+        app:counterOverflowTextColor="@color/orange"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="160dp"
+        android:layout_height="45dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_edit_email"
+            android:layout_width="160dp"
+            android:layout_height="33dp"
+            android:hint="E-mail"
+            android:textSize="10sp"
+            android:inputType="textEmailAddress"
+            android:outlineAmbientShadowColor="@color/orange"
+            android:outlineSpotShadowColor="@color/orange"
+            android:textColor="@color/gray" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/text_input_password"
+        android:textColorHint="#AFAFAF"
+        app:counterTextColor="@color/orange"
+        app:boxBackgroundColor="@color/orange"
+        app:boxStrokeColor="@color/orange"
+        android:outlineAmbientShadowColor="@color/orange"
+        android:outlineSpotShadowColor="@color/orange"
+        app:counterOverflowTextColor="@color/orange"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="160dp"
+        android:layout_height="45dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_edit_password"
+            android:layout_width="160dp"
+            android:layout_height="33dp"
+            android:hint="Password"
+            android:textSize="10sp"
+            android:inputType="textPassword"
+            android:outlineAmbientShadowColor="@color/orange"
+            android:outlineSpotShadowColor="@color/orange"
+            android:textColor="@color/gray" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:id="@+id/btnLogIn"
+        android:layout_marginTop="5dp"
+        android:layout_width="200dp"
+        android:text="Войти"
+        android:paddingBottom="10dp"
+        android:background="@color/orange"
+        android:layout_height="50dp"
+        android:textAllCaps="false"
+        android:onClick="goToMenu"
+        />
+</LinearLayout>

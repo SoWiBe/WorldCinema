@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BatumiCinema"
 include ':app'
+include ':wearbatumicinema'
+include ':wearbatumi'
