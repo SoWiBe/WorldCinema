@@ -17,13 +17,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+//все основные элементы адаптера были расписаны в классе ChatAdapter,
+//далее будут описаны сугубо специфичные моменты кода всех адаптеров
+
+//адаптер для отображения всех коллекций
 public class CollectionsAdapter extends RecyclerView.Adapter<CollectionsAdapter.ViewHolder>{
+
     private ArrayList<Collection> collections;
     private LayoutInflater inflater;
     private Context context;
 
-    public CollectionsAdapter(@NonNull Context context, ArrayList<Collection> collections
-                             ) {
+    public CollectionsAdapter(@NonNull Context context, ArrayList<Collection> collections) {
         this.context = context;
         this.collections = collections;
         this.inflater = LayoutInflater.from(context);;

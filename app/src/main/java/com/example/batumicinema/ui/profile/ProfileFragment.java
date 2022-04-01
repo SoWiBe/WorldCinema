@@ -81,6 +81,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 sharedPreferences.edit().remove("token").commit();
+                sharedPreferences.edit().remove("firstName").commit();
+                sharedPreferences.edit().remove("lastName").commit();
                 startAuthorizationActivity();
             }
         });

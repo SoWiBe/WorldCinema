@@ -1,5 +1,6 @@
 package com.example.batumicinema.Discussions;
 
+//класс обсуждения
 public class Discussion {
     private int discIcon;
     private String discTitle;
@@ -35,9 +36,4 @@ public class Discussion {
         this.discChatText = discChatText;
     }
 
-    //TODO content
-
-    public void getContent() {
-
-    }
 }

@@ -24,16 +24,21 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter {
 
-
+    //список объектов класса
+    //в одном объекте хранится вся информация о сообщениях чата
     private List<ChatMessageResponse> chatItems;
+    //переменные данных для вывода сообщения
     private String textMessageMy, textMessageOpp;
     private String textNameMy, textNameOpp;
     private String textTimeMy, textTimeOpp;
 
+    //конструктор в параметры которого нужно передать список данных сообщений
     public ChatAdapter(List<ChatMessageResponse> chatItems) {
         this.chatItems = chatItems;
     }
 
+
+    //здесь возврщаем необходимую нам верстку, которая зависит от viewType, он задается непосредственно в самом классе
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,6 +54,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
         }
     }
 
+    //установка всех значений в нужные поля, в зависимости от выбранного элемента
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         switch (chatItems.get(position).getViewType()){
@@ -73,6 +79,7 @@ public class ChatAdapter extends RecyclerView.Adapter {
         }
     }
 
+    //установка viewType для для адаптера
     @Override
     public int getItemViewType(int position) {
         switch (chatItems.get(position).getViewType()) {
@@ -85,11 +92,13 @@ public class ChatAdapter extends RecyclerView.Adapter {
         }
     }
 
+    //получение размерности списка
     @Override
     public int getItemCount() {
         return chatItems.size();
     }
 
+    //класс, который отвечает за ваше сообщение
     class LayoutOneViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtMessage;
@@ -122,6 +131,8 @@ public class ChatAdapter extends RecyclerView.Adapter {
             txtNamePerson.setText(txtName);
         }
     }
+
+    //класс первой версии сообщения, когда это отправили не вы
     class LayoutTwoViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtMessage;

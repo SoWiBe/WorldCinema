@@ -15,6 +15,7 @@ import com.example.batumicinema.R;
 
 import java.util.ArrayList;
 
+//адапетр для отображения списка обсуждений
 public class DiscussionsAdapter extends RecyclerView.Adapter<DiscussionsAdapter.ViewHolder> {
 
     private ArrayList<Discussion> discussions;

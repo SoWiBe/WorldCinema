@@ -27,10 +27,6 @@
             android:name=".ui.collections.CreateCollection"
             android:exported="false" />
         <activity
-            android:name=".MainMenu.MainMenu"
-            android:exported="false"
-            android:label="@string/title_activity_main_menu" />
-        <activity
             android:name=".Authorization.SignInActivity"
             android:exported="false" />
         <activity

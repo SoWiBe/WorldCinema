@@ -23,6 +23,8 @@ import java.util.ArrayList;
 
 import javax.security.auth.callback.Callback;
 
+
+//адаптер для отображения списка всех фильмов
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
     private ArrayList<MovieResponse> movieResponses;
@@ -65,6 +67,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         return movieResponses.size();
     }
 
+    //класс одного элемента списка
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         final private ImageView coverCinema;

@@ -40,17 +40,29 @@ import retrofit2.Response;
 
 public class ChatActivity extends AppCompatActivity {
 
+    //отвечает за нажатие кнопки отправки
     private FrameLayout frameSendImage;
+    //адаптер для чата
     private ChatAdapter chatAdapter;
+    //менеджер для recyclerView
     private LinearLayoutManager linearLayoutManager;
+    //отвечает за заполнение чата
     private RecyclerView recyclerView;
+    //поле ввода сообщения
     private TextInputEditText message;
+    //данные для отправки в запросы
     private String movieId, chatId;
+    //получение данных через intent
     private Bundle bundle;
+    //название фильма
     private TextView txtNameMovie;
+    //токен, нужен здесь для получения данных чата
     private String token;
+    //сервис с чат запросами
     private IApiService service = ChatHandler.getInstance().getService();
+    //получение данных юзера
     private SharedPreferences sharedPreferences;
+    //данные имени и фамилии
     private String myFirstName, mySecondName;
 
     private ArrayList<ChatMessageResponse> chatMessageResponses;
@@ -59,22 +71,28 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        //инициализируем поля
+        txtNameMovie = findViewById(R.id.txtChatName);
+        message = findViewById(R.id.textEditMessage);
         recyclerView = findViewById(R.id.recyclerChat);
+        frameSendImage = findViewById(R.id.frameSendImage);
+
+        //получение токена
         sharedPreferences = getSharedPreferences("token", MODE_PRIVATE);
         token = sharedPreferences.getString("token", "");
-        message = findViewById(R.id.textEditMessage);
 
+        //получение имени и фамилии
         myFirstName = sharedPreferences.getString("firstName", "");
         mySecondName = sharedPreferences.getString("lastName", "");
-        Toast.makeText(this, myFirstName + "||" + mySecondName, Toast.LENGTH_SHORT).show();
-        txtNameMovie = findViewById(R.id.txtChatName);
+
+        //получаем название фильма
         bundle = getIntent().getExtras();
         if(bundle!=null){
             movieId = bundle.getString("movieId");
             getChats(movieId);
-            Toast.makeText(this, "" + movieId, Toast.LENGTH_SHORT).show();
         }
 
+        //создаем manager и подклчаем его к recyclerView
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
@@ -84,7 +102,7 @@ public class ChatActivity extends AppCompatActivity {
                 getChatMessages(token, chatId);
             }
         }, 0,3000);
-        frameSendImage = findViewById(R.id.frameSendImage);
+
         frameSendImage.setOnClickListener(view -> {
             sendMessage(token, chatId, new MessageBody(message.getText().toString()));
             getChatMessages(token, chatId);

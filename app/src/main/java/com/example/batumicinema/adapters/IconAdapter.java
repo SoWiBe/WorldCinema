@@ -21,6 +21,8 @@ import com.example.batumicinema.ui.collections.IconItem;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//адаптер для отображения списка иконок
 public class IconAdapter extends ArrayAdapter<IconItem> {
 
     private List<IconItem> iconsList = new ArrayList<>();

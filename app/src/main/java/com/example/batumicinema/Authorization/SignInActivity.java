@@ -3,18 +3,15 @@ package com.example.batumicinema.Authorization;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.batumicinema.MainActivity;
 import com.example.batumicinema.R;
 import com.example.batumicinema.network.ErrorUtils;
 import com.example.batumicinema.network.RegistrationHandler;
-import com.example.batumicinema.network.models.LoginBody;
 import com.example.batumicinema.network.models.RegistrationBody;
 import com.example.batumicinema.network.models.RegistrationResponse;
 import com.example.batumicinema.network.service.IApiService;

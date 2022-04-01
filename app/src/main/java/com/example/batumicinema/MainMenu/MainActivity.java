@@ -18,10 +18,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity{
 
+    //переменные для фрагментов
     private final Fragment homeFragment = new HomeFragment();
     private final Fragment compilFragment = new CompilationFragment();
     private final Fragment collectionsFragment = new CollectionsFragment();
     private final Fragment profileFragment = new ProfileFragment();
+
     private Fragment active = homeFragment;
     private FragmentManager fragmentManager;
     private BottomNavigationView bottomNavigationView;
@@ -33,24 +35,29 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //инициализируем фрагмент менеджер для работы с фрагментами
         fragmentManager = getSupportFragmentManager();
+        //задаем фрагментам все параметры, у home не ставим hide, т.к. он будет первым открытым фрагментом
         fragmentManager.beginTransaction().add(R.id.main_container, homeFragment, "home").commit();
         fragmentManager.beginTransaction().add(R.id.main_container, compilFragment, "compilation").hide(compilFragment).commit();
         fragmentManager.beginTransaction().add(R.id.main_container, collectionsFragment, "collections").hide(collectionsFragment).commit();
         fragmentManager.beginTransaction().add(R.id.main_container, profileFragment, "profile").hide(profileFragment).commit();
 
+        //инициализация навигации нижней панели
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(onNavigationItemSelectedListener);
 
 
     }
 
+    //обработка нажатий всей нижней панели основого меню
     private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()){
                 case R.id.page_1:
                     fragmentManager.beginTransaction().hide(active).show(homeFragment).commit();
+                    //установка активного активити, для того чтобы потом его скрывать
                     active = homeFragment;
                     return true;
                 case R.id.page_2:

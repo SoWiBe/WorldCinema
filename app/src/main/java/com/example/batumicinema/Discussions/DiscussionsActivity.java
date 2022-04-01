@@ -4,27 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.batumicinema.MainActivity;
 import com.example.batumicinema.R;
 import com.example.batumicinema.adapters.DiscussionsAdapter;
 import com.example.batumicinema.network.ChatHandler;
-import com.example.batumicinema.network.ErrorUtils;
-import com.example.batumicinema.network.models.ChatResponse;
 import com.example.batumicinema.network.service.IApiService;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DiscussionsActivity extends AppCompatActivity {
 
