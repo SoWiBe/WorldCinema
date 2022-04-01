@@ -41,9 +41,6 @@ public class CreateCollection extends AppCompatActivity {
     //изменение данных
     private SharedPreferences.Editor editor;
 
-    private
-
-    private Set<String> set = new HashSet<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +64,6 @@ public class CreateCollection extends AppCompatActivity {
         btnSaveCollection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                set.add(editTitle.getText().toString());
-                editor.putStringSet("titles", set);
                 startActivity(new Intent(CreateCollection.this, MainActivity.class));
             }
         });
