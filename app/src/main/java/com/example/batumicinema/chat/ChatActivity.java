@@ -96,6 +96,7 @@ public class ChatActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        //каждые 3 секунды получаем данные чата
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -103,6 +104,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         }, 0,3000);
 
+        //отправка сообщений
         frameSendImage.setOnClickListener(view -> {
             sendMessage(token, chatId, new MessageBody(message.getText().toString()));
             getChatMessages(token, chatId);

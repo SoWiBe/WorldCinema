@@ -2,6 +2,8 @@ package com.example.batumicinema.network.models;
 
 import com.google.gson.annotations.SerializedName;
 
+//чаты получаются через API, поэтому у каждого поля указаны SerializedName
+
 public class ChatResponse {
     @SerializedName("chatId")
     private String chatId;

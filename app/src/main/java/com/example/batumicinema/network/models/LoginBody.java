@@ -2,6 +2,8 @@ package com.example.batumicinema.network.models;
 
 import com.google.gson.annotations.SerializedName;
 
+
+//класс, необходимый для отправки в post-запрос и получения токена пользователя
 public class LoginBody {
     @SerializedName("email")
     private String email;

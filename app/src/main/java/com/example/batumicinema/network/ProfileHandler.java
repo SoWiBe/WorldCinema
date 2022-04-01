@@ -8,6 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+//связь retrofit с api для получения данных, весь connection здесь
 public class ProfileHandler {
     private static ProfileHandler mInstance;
 

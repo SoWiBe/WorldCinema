@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+//сообщения получаются через API, поэтому у каждого поля указаны SerializedName
+
+//класс сообщения
 public class ChatMessageResponse {
     @SerializedName("chatId")
     @Expose

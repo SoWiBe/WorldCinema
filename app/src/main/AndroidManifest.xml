@@ -42,7 +42,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainMenu.MainActivity"
+            android:name=".ui.MainMenu.MainActivity"
             android:exported="true" />
     </application>
 

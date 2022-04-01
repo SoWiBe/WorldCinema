@@ -24,6 +24,7 @@ public class CollectionsFragment extends Fragment {
     private ArrayList<Collection> collections = new ArrayList<>();
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
+
     public CollectionsFragment() {
 
     }

@@ -1,4 +1,4 @@
-package com.example.batumicinema.MainMenu;
+package com.example.batumicinema.ui.MainMenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.EditText;
 
 import com.example.batumicinema.R;
 import com.example.batumicinema.ui.collections.CollectionsFragment;

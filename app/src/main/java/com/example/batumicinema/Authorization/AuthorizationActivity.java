@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.batumicinema.MainMenu.MainActivity;
+import com.example.batumicinema.ui.MainMenu.MainActivity;
 import com.example.batumicinema.R;
 import com.example.batumicinema.network.ApiHandler;
 import com.example.batumicinema.network.ErrorUtils;
